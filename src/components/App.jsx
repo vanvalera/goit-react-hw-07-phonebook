@@ -43,13 +43,11 @@ const App = () => {
       <h1 className={css.phonebook__app}>Phonebook</h1>
       <ContactForm />
       <h2 className={css.contacts__app}>Contacts</h2>
-      {loading ? (
-        <Loader />
-      ) : contacts.length > 0 ? (
-        <Filter />
-      ) : showEmptyMessage ? (
+      {loading && <Loader />}
+      {contacts.length > 0 && <Filter />}
+      {contacts.length === 0 && showEmptyMessage && (
         <p>Your phonebook is empty. Add first contact!</p>
-      ) : null}
+      )}
       {contacts.length > 0 && <ContactList />}
     </div>
   );
